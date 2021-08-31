@@ -50,6 +50,7 @@
                                       (data nil)
                                       (pagination-resource nil)
                                       (pagination-values nil)
+                                      (sync nil)
                                       &allow-other-keys)
   "Request URL with SETTINGS, PARAMS, HEADERS and DATA.
 
@@ -62,7 +63,7 @@ PAGINATION-VALUES is a private argument for handling pagination."
   (if pagination-resource
       (let ((complete
              (apply-partially #'atlassian-jira-success pagination-resource url params headers settings pagination-values)))
-        (atlassian-request url :params params :headers headers :data data :pagination-values pagination-values :inflection 'camelize :complete complete))
+        (atlassian-request url :params params :headers headers :data data :pagination-values pagination-values :inflection 'camelize :complete complete :sync sync))
     (apply #'atlassian-request url :params params :headers headers :data data :pagination-values pagination-values :inflection 'camelize settings)))
 
 (defun atlassian-jira-url (domain api-name api-version &rest resource)
@@ -116,6 +117,19 @@ FIELDS is a list of fields to fetch."
          `(issue ,id-or-key)
          :params (atlassian-jira-params expand fields)
          settings))
+
+(defun atlassian-jira-read-issue (prompt domain jql &optional require-match)
+  "Fetch issues matching JQL and prompt the user to choose one with PROMPT."
+  (let* ((issues (request-response-data (atlassian-jira-search domain jql :sync t)))
+         (titles (seq-map (lambda (issue)
+                              (format "%s: %s"
+                                      (alist-get 'key issue)
+                                      (alist-get 'summary (alist-get 'fields issue))))
+                            issues))
+         (key (car (split-string (completing-read prompt titles nil require-match) ":"))))
+    (if-let ((issue (seq-find (lambda (req) (string= (alist-get 'key req) key)) issues)))
+        issue
+      (request-response-data (atlassian-jira-issue domain key :sync t)))))
 
 (provide 'atlassian-jira)
 ;;; atlassian-jira.el ends here
