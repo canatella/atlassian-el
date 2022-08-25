@@ -1,4 +1,4 @@
-;;; at-jira.el -- Elisp bindings for Atlassian Jira REST API.  -*- lexical-binding: t; -*-
+;;; at-jira.el --- Elisp bindings for Atlassian Jira REST API.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Damien Merenne <dam@cosinux.org>
 

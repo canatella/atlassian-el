@@ -1,4 +1,4 @@
-;;; atlassian-confluence.el -- Elisp bindings for Atlassian Confluence REST API.  -*- lexical-binding: t; -*-
+;;; atlassian-confluence.el --- Elisp bindings for Atlassian Confluence REST API.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Damien Merenne <dam@cosinux.org>
 

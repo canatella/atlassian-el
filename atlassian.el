@@ -1,4 +1,4 @@
-;;; atlassian.el -- Atlassian apis -*- lexical-binding: t; -*-
+;;; atlassian.el --- Atlassian apis -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Damien Merenne <dam@cosinux.org>
 

@@ -1,4 +1,4 @@
-;;; at-common.el -- Atlassian integration  -*- lexical-binding: t; -*-
+;;; at-common.el --- Atlassian integration  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Damien Merenne <dam@cosinux.org>
 

@@ -1,4 +1,4 @@
-;;; atlassian-bitbucket.el -- API for bitbucket access -*- lexical-binding: t; -*-
+;;; atlassian-bitbucket.el --- API for bitbucket access -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Damien Merenne <dam@cosinux.org>
 
